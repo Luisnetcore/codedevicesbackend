@@ -29,11 +29,5 @@ namespace devices.webapi.Controllers
             })
             .ToArray();
         }
-
-        [HttpPost(Name = "CreateWatherForeCast")]
-        public string Post([FromBody] string name)
-        {
-            return "se creó el siguiente clima: " + name;
-        }
     }
 }
