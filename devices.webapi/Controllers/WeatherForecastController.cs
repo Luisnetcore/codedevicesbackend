@@ -8,4 +8,3 @@ namespace devices.webapi.Controllers
     {
 
     }
-}
