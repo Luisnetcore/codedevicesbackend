@@ -10,10 +10,12 @@ namespace Devices.Application.Utils
         {
             CreateMap<Device, DeviceInformationDTO>();
             CreateMap<Category, CategoryCreateDto>().ReverseMap();
-            CreateMap<Category, CategoryInformationDto>().ReverseMap().ForMember(dest => dest.Id,
-                       opt => opt.MapFrom(src => src.CategoryId));
+            CreateMap<Category, CategoryInformationDto>().ForMember(dest => dest.CategoryId,
+                       opt => opt.MapFrom(src => src.Id)).ReverseMap();
 
             CreateMap<Brand, BrandCreateDTO>().ReverseMap();
+            CreateMap<Brand, BrandInformationDTO>().ForMember(dest => dest.BrandId,
+                       opt => opt.MapFrom(src => src.Id)).ReverseMap();
         }
     }
 }

@@ -16,37 +16,16 @@ namespace devices.webapi.Controllers
             _brandService = brandService;
         }
 
-        // GET: api/<BrandController>
         [HttpGet]
         public async Task<List<BrandInformationDTO>> Get()
         {
             return await _brandService.GetBrands();
         }
 
-        // GET api/<BrandController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<BrandController>
         [HttpPost]
         public async Task Post([FromBody] BrandCreateDTO requestDto)
         {
             await _brandService.CreateBrand(requestDto);
-        }
-
-        // PUT api/<BrandController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<BrandController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

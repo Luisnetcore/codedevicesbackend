@@ -3,11 +3,6 @@ using Devices.Application.DTOs;
 using Devices.Application.services.interfaces;
 using Devices.Domain.Entities;
 using Devices.Infraestructure.Data.Repository.Repositories.interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Devices.Application.services.implementations
 {
@@ -15,7 +10,8 @@ namespace Devices.Application.services.implementations
     {
         private readonly IBrandRepository _repository;
         private readonly IMapper _mapper;
-        public BrandService(IBrandRepository brandRepository, IMapper mapper) { 
+        public BrandService(IBrandRepository brandRepository, IMapper mapper)
+        {
 
             _repository = brandRepository;
             _mapper = mapper;
@@ -29,9 +25,13 @@ namespace Devices.Application.services.implementations
             return brandCreateDTO;
         }
 
-        public Task<List<BrandInformationDTO>> GetBrands()
+        public async Task<List<BrandInformationDTO>> GetBrands()
         {
-            throw new NotImplementedException();
+            var listBrands = await _repository.GetAll();
+
+            var listBrandsDtos = _mapper.Map<List<BrandInformationDTO>>(listBrands);
+
+            return listBrandsDtos;
         }
     }
- }
+}
