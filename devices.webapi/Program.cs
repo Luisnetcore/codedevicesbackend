@@ -1,3 +1,6 @@
+using Devices.Application;
+using Devices.Application.Utils;
+using Devices.Infraestructure;
 using Devices.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +13,25 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+//Configuracion de inyeccion de dependencias
+
+builder.Services.AddDeviceApplication();
+builder.Services.AddDeviceInfraestructure();
+
+
+//SE CONFIGURA AutoMapper que ojo puede cobrar pronto
+builder.Services.AddAutoMapper(typeof(DeviceMapperProfile));
+
 //SE CONFIGURA POSTGRES
 builder.Services.AddDbContext<DeviceDBContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("Devices.Infraestructure")
+    ));
+
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
