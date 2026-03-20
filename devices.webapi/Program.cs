@@ -25,7 +25,10 @@ builder.Services.AddAutoMapper(typeof(DeviceMapperProfile));
 
 //SE CONFIGURA POSTGRES
 builder.Services.AddDbContext<DeviceDBContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("Devices.Infraestructure")
+    ));
 
 builder.Services.AddAutoMapper(typeof(Program));
 
