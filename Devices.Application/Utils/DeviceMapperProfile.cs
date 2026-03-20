@@ -9,6 +9,7 @@ namespace Devices.Application.Utils
         public DeviceMapperProfile()
         {
             CreateMap<Device, DeviceInformationDTO>();
+            CreateMap<Category, CategoryCreateDto>().ReverseMap();
         }
     }
 }
