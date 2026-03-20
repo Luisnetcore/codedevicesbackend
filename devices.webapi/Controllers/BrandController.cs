@@ -32,8 +32,9 @@ namespace devices.webapi.Controllers
 
         // POST api/<BrandController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task Post([FromBody] BrandCreateDTO requestDto)
         {
+            await _brandService.CreateBrand(requestDto);
         }
 
         // PUT api/<BrandController>/5

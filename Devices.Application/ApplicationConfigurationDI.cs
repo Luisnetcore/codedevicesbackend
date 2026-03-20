@@ -9,6 +9,7 @@ namespace Devices.Application
         public static IServiceCollection AddDeviceApplication(this IServiceCollection services)
         {
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IBrandService, BrandService>();
 
             return services;
         }

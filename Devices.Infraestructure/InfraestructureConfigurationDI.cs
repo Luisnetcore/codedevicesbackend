@@ -9,6 +9,7 @@ namespace Devices.Infraestructure
         public static IServiceCollection AddDeviceInfraestructure(this IServiceCollection services)
         {
             services.AddScoped<IDeviceRepository, DeviceRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
 
             return services;
         }
