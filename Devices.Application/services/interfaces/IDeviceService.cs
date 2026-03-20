@@ -1,7 +1,9 @@
-﻿namespace Devices.Application.services.interfaces
+﻿using Devices.Application.DTOs;
+
+namespace Devices.Application.services.interfaces
 {
     public interface IDeviceService
     {
-        public List<Device> GetDevices();
+        Task<List<DeviceInformationDTO>> GetAllDevices();
     }
 }
