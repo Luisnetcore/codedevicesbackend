@@ -11,6 +11,7 @@ namespace Devices.Application
             services.AddScoped<IDeviceService, DeviceService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }
