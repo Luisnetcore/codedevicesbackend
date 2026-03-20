@@ -2,6 +2,5 @@
 {
     public interface IDeviceService
     {
-        public List<Device> GetDevices();
     }
 }
