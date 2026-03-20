@@ -8,6 +8,7 @@ namespace Devices.Infraestructure.Data
         public DbSet<Device> Devices { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brand{ get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
 
         public DeviceDBContext(DbContextOptions<DeviceDBContext> options)
             : base(options)
