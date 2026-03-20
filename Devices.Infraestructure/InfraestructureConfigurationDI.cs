@@ -10,6 +10,7 @@ namespace Devices.Infraestructure
         {
             services.AddScoped<IDeviceRepository, DeviceRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
 
             return services;
         }
