@@ -16,37 +16,16 @@ namespace devices.webapi.Controllers
             _categoryService = categoryService;
         }
 
-        // GET: api/<CategoryController>
         [HttpGet]
         public async Task<List<CategoryInformationDto>> Get()
         {
             return await _categoryService.GetAllCategories();
         }
 
-        // GET api/<CategoryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<CategoryController>
         [HttpPost]
         public async Task<CategoryCreateDto> Post([FromBody] CategoryCreateDto requestDto)
         {
             return await _categoryService.CreateCategory(requestDto);
-        }
-
-        // PUT api/<CategoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<CategoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
