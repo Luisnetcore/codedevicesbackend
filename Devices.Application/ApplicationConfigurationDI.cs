@@ -10,6 +10,7 @@ namespace Devices.Application
         {
             services.AddScoped<IDeviceService, DeviceService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IBrandService, BrandService>();
 
             return services;
         }
