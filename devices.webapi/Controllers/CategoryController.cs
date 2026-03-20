@@ -18,9 +18,9 @@ namespace devices.webapi.Controllers
 
         // GET: api/<CategoryController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<CategoryInformationDto>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _categoryService.GetAllCategories();
         }
 
         // GET api/<CategoryController>/5

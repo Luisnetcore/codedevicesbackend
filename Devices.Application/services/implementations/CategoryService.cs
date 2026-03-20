@@ -24,5 +24,13 @@ namespace Devices.Application.services.implementations
 
             return categoryCreateDto;
         }
+
+        public async Task<List<CategoryInformationDto>> GetAllCategories()
+        {
+            var categories = await _repository.GetAll();
+            var cateriesInformation = _mapper.Map<List<CategoryInformationDto>>(categories);
+
+            return cateriesInformation;
+        }
     }
 }
