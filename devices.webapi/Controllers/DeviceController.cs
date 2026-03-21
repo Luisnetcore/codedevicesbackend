@@ -1,4 +1,5 @@
 ﻿using Devices.Application.DTOs;
+using Devices.Application.services.implementations;
 using Devices.Application.services.interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,12 @@ namespace devices.webapi.Controllers
     public class DeviceController : ControllerBase
     {
         private readonly IDeviceService _deviceService;
-        public DeviceController(IDeviceService deviceService)
+        private readonly CloudDinaryService _cloudinary;
+
+        public DeviceController(IDeviceService deviceService, CloudDinaryService cloudinary)
         {
             _deviceService = deviceService;
+            _cloudinary = cloudinary;
         }
 
         [HttpGet]
@@ -32,8 +36,13 @@ namespace devices.webapi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task Post([FromForm] DeviceRegisterDto requestDto)
         {
+            var url = await _cloudinary.UploadImageAsync(requestDto.Imagen);
+
+            requestDto.ImageURL = url;
+
+            await _deviceService.CreateDevice(requestDto);
         }
 
         [Authorize(Roles = "Admin")]

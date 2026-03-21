@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Devices.Application.DTOs;
 using Devices.Application.services.interfaces;
+using Devices.Domain.Entities;
 using Devices.Infraestructure.Data.Repository.Repositories.interfaces;
 
 namespace Devices.Application.services.implementations
@@ -14,6 +15,21 @@ namespace Devices.Application.services.implementations
             _repository = deviceRepository;
             _mapper = mapper;
         }
+
+        public async Task<DeviceInformationDTO> CreateDevice(DeviceRegisterDto requestDto)
+        {
+            var device = _mapper.Map<Device>(requestDto);
+
+            await _repository.Add(device);
+
+            return new DeviceInformationDTO
+            {
+                Name = device.Name,
+                ImageURL = device.ImageURL,
+                Price = device.Price,
+            };
+        }
+
         public async Task<List<DeviceInformationDTO>> GetAllDevices()
         {
             var listDevices = await _repository.GetAll();

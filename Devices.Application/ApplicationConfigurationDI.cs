@@ -13,6 +13,7 @@ namespace Devices.Application
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<CloudDinaryService>();
 
             return services;
         }
