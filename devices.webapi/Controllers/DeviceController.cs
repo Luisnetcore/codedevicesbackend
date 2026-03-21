@@ -1,5 +1,6 @@
 ﻿using Devices.Application.DTOs;
 using Devices.Application.services.interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,26 +23,26 @@ namespace devices.webapi.Controllers
             return await _deviceService.GetAllDevices();
         }
 
-        // GET api/<DeviceController>/5
+
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<DeviceController>
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<DeviceController>/5
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<DeviceController>/5
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

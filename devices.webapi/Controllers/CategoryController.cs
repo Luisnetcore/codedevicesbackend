@@ -1,5 +1,6 @@
 ﻿using Devices.Application.DTOs;
 using Devices.Application.services.interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,6 +23,7 @@ namespace devices.webapi.Controllers
             return await _categoryService.GetAllCategories();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<CategoryCreateDto> Post([FromBody] CategoryCreateDto requestDto)
         {
