@@ -33,9 +33,10 @@ namespace devices.webapi.Controllers
 
 
         [HttpPost("login")]
-        public async Task<string> Login([FromBody] LoginDto loginDto)
+        public async Task<object> Login([FromBody] LoginDto loginDto)
         {
-            return await _authService.Login(loginDto);
+            var token = await _authService.Login(loginDto);
+            return new {token = token};
         }
 
         [HttpPost("register")]
