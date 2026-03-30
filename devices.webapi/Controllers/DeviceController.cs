@@ -34,7 +34,7 @@ namespace devices.webapi.Controllers
             return "value";
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public async Task Post([FromForm] DeviceRegisterDto requestDto)
         {
